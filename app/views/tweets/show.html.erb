@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tweet.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @tweet.content %>
+</p>
+
+ <p>
+  <strong>Created At:</strong>
+  <%= @tweet.created_at.localtime.to_formatted_s(:short) %>
+</p>  
+
+<p>
+  <strong>Last Updated At:</strong>
+  <%= @tweet.updated_at.localtime.to_formatted_s(:short) %>
+</p>      
+
+<p>
+  <strong>From User:</strong>
+  <%= @tweet.user.username %>
+</p>      
+<% if session[:user_id]==@tweet.user.id %>     
+  <%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<%end%>
+<%= link_to 'Back', tweets_path %>
