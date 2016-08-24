@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  before_action :require_user,only:[:new,:create,:index]
+  before_action :require_user,only:[:new,:create]
 
   # GET /tweets
   # GET /tweets.json
@@ -9,8 +9,9 @@ class TweetsController < ApplicationController
       @tweets = User.find(params[:user]).tweets.all
       @user=User.find(params[:user])
       @title='Showing All Tweets By '+@user.username
+
     else
-      @tweets = @current_user.tweets.all
+      @tweets=Tweet.all
     end
   end
 
@@ -70,6 +71,10 @@ class TweetsController < ApplicationController
     end
   end
 
+  def fullsize_image
+    @tweet=Tweet.find(params[:tweet])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweet
@@ -78,6 +83,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:title, :content)
+      params.require(:tweet).permit(:title, :content,:image)
     end
 end

@@ -29,6 +29,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
   gem 'has_friendship'
+
+
+  gem "paperclip", "~> 5.0.0"
+
+
+  gem 'aws-sdk', '~> 2'
+
+
+  gem 'time_difference'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

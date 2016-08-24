@@ -11,13 +11,15 @@ Rails.application.routes.draw do
   get 'accept_friend'=>'users#accept_friend'
   get 'remove_friend'=>'users#remove_friend'
 
+  get 'fullsize_image'=>'tweets#fullsize_image'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
+    root 'tweets#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

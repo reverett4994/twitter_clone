@@ -5,32 +5,65 @@
   <h1>Listing Tweets</h1>
 <%end%>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Created At</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tweets.each do |tweet| %>
+<% if false %>
+  <table>
+    <thead>
       <tr>
-        <td><%= tweet.title %></td>
-        <td><%= tweet.content %></td>
-        <td><%= tweet.created_at.localtime.to_formatted_s(:short)   %></td> 
-        <td><%= link_to 'Show', tweet %></td>  
-        <% if @user && session[:user_id]==@user.id %>     
-          <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-          <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Image</th>
+        <th>Created At</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%= tweet.title %></td>
+          <td><%= tweet.content %></td>
+          <td> <%= image_tag tweet.image.url, :class=> 'index_tweet_image' %>
+          <td><%= tweet.created_at.localtime.to_formatted_s(:short)   %></td> 
+          <td><%= link_to 'Show', tweet %></td>  
+          <% if @user && session[:user_id]==@user.id %>     
+            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+            <td><%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+<%end%>
+
+
+<div id='tweet_index'>
+    <% @tweets.each do |tweet| %>
+   
+    <%=link_to (image_tag tweet.user.avatar.url,:class=>'thumbnail'),user_path(tweet.user), :class=>'tweet_image_link'%>
+
+      <%= link_to tweet do %>
+
+      <div class='tweet'>
+        
+        <p id='tweet_user'><%=tweet.user.username%></p>
+        
+        <p><%= tweet.content %></p>
+        
+        <% if tweet.image.exists? %>
+          <%= image_tag tweet.image.url, :class=> 'index_tweet_image' %>
+        <%end%>
+        
+        <% time_diffrence=TimeDifference.between(tweet.created_at, Time.current).in_general %>
+        
+        <p id='tweet_time'>Created About <%=time_diffrence[:days]%> days and <%=time_diffrence[:hours]%> hours ago</p>
+
+       </div>
+
+      </br>
+    <%end%>
+    <%end%>
+</div>
+
 
 <%= link_to 'New Tweet', new_tweet_path %>

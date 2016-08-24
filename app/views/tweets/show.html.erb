@@ -1,30 +1,67 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @tweet.title %>
-</p>
+<% if false %>
+  <div id='tweet_show'>
 
-<p>
-  <strong>Content:</strong>
-  <%= @tweet.content %>
-</p>
+    <p>
+      <%= @tweet.content %>
+    </p>
 
- <p>
-  <strong>Created At:</strong>
-  <%= @tweet.created_at.localtime.to_formatted_s(:short) %>
-</p>  
+    <p>
+      <% if @tweet.image.exists? %>
+        <%= link_to (image_tag @tweet.image.url, :class=> 'tweet_image'), fullsize_image_path(:tweet=>@tweet) %> 
+       <%end%>
+    </p>
 
-<p>
-  <strong>Last Updated At:</strong>
-  <%= @tweet.updated_at.localtime.to_formatted_s(:short) %>
-</p>      
+     <p>
+      <strong>Created At:</strong>
+      <%= @tweet.created_at.localtime.to_formatted_s(:short) %>
+    </p>  
 
-<p>
-  <strong>From User:</strong>
-  <%= @tweet.user.username %>
-</p>      
-<% if session[:user_id]==@tweet.user.id %>     
-  <%= link_to 'Edit', edit_tweet_path(@tweet) %> |
-<%end%>
-<%= link_to 'Back', tweets_path %>
+    <p>
+      <strong>Last Updated At:</strong>
+      <%= @tweet.updated_at.localtime.to_formatted_s(:short) %>
+    </p>      
+
+    <p>
+      <strong>User:</strong>
+      <%= link_to @tweet.user.username, @tweet.user %>
+    </p>      
+    <% if session[:user_id]==@tweet.user.id %>     
+      <%= link_to 'Edit', edit_tweet_path(@tweet) %> 
+    <%end%>
+    <%= link_to 'Back', tweets_path %>
+   
+    </div>
+  <%end%>
+
+<div id='tweet_show_div'>
+    
+    <%=link_to (image_tag @tweet.user.avatar.url,:class=>'thumbnail'),user_path(@tweet.user), :class=>'tweet_image_link'%>
+
+      <%= link_to @tweet do %>
+
+      <div class='tweet'>
+        
+        <p id='tweet_user'><%=@tweet.user.username%></p>
+        
+        <p><%= @tweet.content %></p>
+        
+        <% if @tweet.image.exists? %>
+          <%= link_to (image_tag @tweet.image.url, :class=> 'tweet_image'), fullsize_image_path(:tweet=>@tweet) %>
+        <%end%>
+        
+        <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_general %>
+        
+        <p id='tweet_time'>Created About <%=time_diffrence[:days]%> days and <%=time_diffrence[:hours]%> hours ago</p>
+
+        <% if session[:user_id]==@tweet.user.id %>     
+           <%= link_to 'Edit', edit_tweet_path(@tweet),:id=>'tweet_edit' %> 
+           <%end%>
+        
+       </div>
+
+      </br>
+    <%end%>
+    
+</div>

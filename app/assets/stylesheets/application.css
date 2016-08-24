@@ -13,7 +13,22 @@
  *= require_tree .
  *= require_self
  */
+html,body { 
+  height:100%;
+  width: 100%;
+  background-color: #f2f2f2;
 
+}
+#wrapper{
+  background-color: #f2f2f2;
+  text-align: center;
+  height: 100%;
+}
+
+a:visited{
+  text-decoration: none;
+  color: black
+}
  /********************************************HEADER******************************************/
 #header a{
 	text-decoration: none;
@@ -50,3 +65,156 @@ th{
  tr:hover {
  	background-color: #f5f5f5
  }
+
+   /********************************************TABLES******************************************/
+
+
+
+  /********************************************User Views******************************************/
+
+#profile_page{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#profile_info{
+  margin-top: 0px;
+  margin-right: 0px;
+  display: inline-block;
+  
+  width: 20%;
+  font-size: 1.2em;
+}
+
+#profile_tweet_index{
+  background-color: white;
+  width:70%;
+  float: right;
+  border: 1px #d9d9d9 solid;
+  display: inline-block;
+  text-align: left;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+ 
+
+}
+.avatar{
+    height: auto; 
+    width: auto; 
+    max-width: 99%; 
+    max-height: 300px;
+    border-radius: 3px;
+}
+
+
+  /********************************************User Views******************************************/
+
+
+
+    /********************************************Tweet Views******************************************/
+
+#tweet_index{
+  background-color: white;
+  width: 50%;
+  margin-left:auto;
+  margin-right: auto;
+  border: 1px #d9d9d9 solid;
+  text-align: left;
+}
+
+.index_tweet_image{
+    height: auto; 
+    width: auto; 
+    max-width: 450px; 
+    max-height: 450px;	
+}
+
+.tweet_image{
+	  height: auto; 
+    width: auto; 
+    max-width: 900px; 
+    max-height: 900px;
+}
+
+.thumbnail{
+    width: 50px; 
+    height: 50px;
+    border-radius: 5px;
+    float: left;
+    display: inline-block;
+    margin: 0px;
+}
+
+.tweet_image_link{
+  margin: 0px;
+
+}
+
+.tweet:hover{
+  background-color: #f2f2f2;
+}
+.tweet{
+  min-height: 50px;
+  display: inline-block;
+  text-decoration: none;
+  
+  margin-bottom:2em;
+  border-bottom:2px #d9d9d9 solid;
+  width: calc(100% - 50px);
+}
+
+
+.tweet p{
+  margin-left: .3em;
+  font-size: 1.5em;
+  margin-bottom: auto;
+  margin-top: auto;  
+}
+#tweet_user{
+  font-size: 1.1em;
+  font-weight: bold;
+}
+#tweet_time {
+  font-size: 1em;
+  color: #4d4d4d
+}
+
+
+
+
+#tweet_show{
+  text-align: center;
+}
+
+
+
+#tweet_show_div{
+
+  background-color: white;
+  width: 50%;
+  margin-left:auto;
+  margin-right: auto;
+  border: 1px #d9d9d9 solid;
+  text-align: left;
+}
+#tweet_show_div a{
+  text-decoration: none;
+ 
+}
+
+#tweet_edit{
+  font-size: 1em;
+  color: #4d4d4d;
+  margin-left:.3em;
+}
+
+#tweet_edit:hover{
+  color: #0066ff;
+  text-decoration: underline;
+}
+    /********************************************Tweet Views******************************************/
+
+
+    /********************************************Profile Views******************************************/
+
