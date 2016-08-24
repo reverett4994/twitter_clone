@@ -81,7 +81,6 @@ th{
   margin-top: 0px;
   margin-right: 0px;
   display: inline-block;
-  
   width: 20%;
   font-size: 1.2em;
 }
@@ -98,6 +97,19 @@ th{
   margin-left: auto;
  
 
+}
+
+#profile_info a{
+  text-decoration: none;
+  color: black;
+}
+
+#profile_info a:hover{
+  text-decoration: underline;
+}
+
+#profile_username{
+  font-size: 30px;
 }
 .avatar{
     height: auto; 
@@ -192,7 +204,7 @@ th{
 #tweet_show_div{
 
   background-color: white;
-  width: 50%;
+  width: 75%;
   margin-left:auto;
   margin-right: auto;
   border: 1px #d9d9d9 solid;
@@ -216,5 +228,4 @@ th{
     /********************************************Tweet Views******************************************/
 
 
-    /********************************************Profile Views******************************************/
 

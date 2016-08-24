@@ -2,9 +2,8 @@
 
 <div id='profile_page'>
   <div id='profile_info'>
-    <p>
-      
-      <%= @user.username %>
+    <p id='profile_username'>
+      <strong><%= @user.username %></strong>
     </p>
     <p>
       
@@ -26,7 +25,7 @@
     </p>
 
     <p>
-      <strong>Friends</strong>
+      <strong>Friends: </br></strong>
       <% @user.friends.each do |friend| %>
         
         <% if session[:user_id]==@user.id %>
@@ -38,11 +37,11 @@
         <br>
       <%end%>
     </p>
-     <td><%= link_to 'Tweets', tweets_path(:user=>@user) %> </td>
+     
 
     <p>
       <% if session[:user_id]==@user.id %>
-        <strong>Pending Friend Requests</strong>
+        <strong>Pending Friend Requests:</strong>
         <% @user.pending_friends.each do |friend| %>
         <%= friend.username %>
       <%end%>
@@ -51,7 +50,7 @@
     </p>
     <% if session[:user_id]==@user.id %>
       <p>
-        <strong>Received Friends Requests</strong>
+        <strong>Received Friends Requests:</strong>
         <% @user.requested_friends.each do |friend| %>
 
           <%= link_to friend.username, accept_friend_path(:id=>friend.id), data: { confirm: 'Are you sure you want to accept this friend request?' }  %> 
@@ -61,7 +60,7 @@
       </p>
     <%end%>
     <% if session[:user_id]==@user.id %>
-      <%= link_to 'Edit', edit_user_path(@user) %>
+      <%= link_to 'Edit Profile', edit_user_path(@user) %>
     <%else%>
        <%= link_to 'Request Friend', request_friend_path(:id=>@user.id) %>
     <%end%>
