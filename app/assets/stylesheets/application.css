@@ -17,12 +17,14 @@ html,body {
   height:100%;
   width: 100%;
   background-color: #f2f2f2;
-
+  margin: 0px;
 }
 #wrapper{
   background-color: #f2f2f2;
   text-align: center;
   height: 100%;
+  /*Lowers content below header before scrolling!! */
+  padding-top: 4.5em;
 }
 
 a:visited{
@@ -30,17 +32,55 @@ a:visited{
   color: black
 }
  /********************************************HEADER******************************************/
+
+#header p{
+  margin: 0px;
+  margin-right: .5em;
+  float: right;
+  font-size: 1.2em;
+}
 #header a{
-	text-decoration: none;
-	color: white;
-	margin: .3em;
+  text-decoration: none;
 }
 #header a:hover{
-	color:black;
+  text-decoration: underline;
+  color: white;
 }
 #header{
-	background-color: #336699;
-	color: white;
+  height: 5em;
+	background-color: rgb(85, 204, 80);
+	color: black;
+  margin:0px;
+  margin-top: 0em;
+  position: fixed;
+  display: block;
+  width: 100%;
+}
+#logo{
+  height: 6.6em;
+  margin: 0px;
+  margin-top: -.8em;
+  display: inline-block;
+  float: left;
+}
+
+
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: .625em 1.563em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    margin-top: 2.3em;
+}
+.button:hover{
+   background-color: #0059b3;
+
 }
  /********************************************HEADER******************************************/
 
@@ -145,8 +185,8 @@ th{
 .tweet_image{
 	  height: auto; 
     width: auto; 
-    max-width: 900px; 
-    max-height: 900px;
+    max-width: 99%; 
+    max-height: 99%;
 }
 
 .thumbnail{

@@ -6,12 +6,12 @@ class TweetsController < ApplicationController
   # GET /tweets.json
   def index
     if params[:user]
-      @tweets = User.find(params[:user]).tweets.all
+      @tweets = User.find(params[:user]).tweets.order('created_at DESC')
       @user=User.find(params[:user])
       @title='Showing All Tweets By '+@user.username
 
     else
-      @tweets=Tweet.all
+      @tweets=Tweet.order('created_at DESC')
     end
   end
 
@@ -38,7 +38,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to user_path(session[:user_id]), notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new }

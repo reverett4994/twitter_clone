@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
+  get 'login'=>'users#login'
+  get 'users/login'=>'users#login'
+  get 'tweets/login'=>'users#login'
+  
+  get 'login_user'=>'users#login_user'
+  get 'users/login_user'=>'users#login_user'
+  get 'tweets/login_user'=>'users#login_user'
+
+  get 'logout'=>'users#logout'
+  get 'users/logout'=>'users#logout'
+  get 'tweets/logout'=>'users#logout'
+
+  get 'signup'=>'users#new'
+
+
   resources :users
   resources :tweets
 
-  get 'login'=>'users#login'
-  get 'login_user'=>'users#login_user'
-  get 'logout'=>'users#logout'
-  get 'signup'=>'users#new'
+
 
   get 'request_friend'=>'users#request_friend'
   get 'accept_friend'=>'users#accept_friend'

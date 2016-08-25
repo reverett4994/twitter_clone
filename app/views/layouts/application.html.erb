@@ -8,25 +8,36 @@
 </head>
 <body>
 
-<div id='header'>	
-	<% if session[:user_id] %>
-		<%= link_to 'My Userpage',user_path(session[:user_id]) %>
-		<%= link_to 'My Tweets',tweets_path(:user=>session[:user_id]) %>
+<div id='header'>
+	<% if session[:user_id] %>	
+		<%= link_to (image_tag("logo.png",:id=>'logo')),user_path(session[:user_id])  %>
+	<%else%>
+		<%= link_to (image_tag("logo.png",:id=>'logo')),tweets_path  %>
 	<%end%>
-	<%= link_to 'All Users',users_path %>
-	<%if session[:user_id]==nil %>
-			<%= link_to 'Log In','login'%>
-		<%else%>
-			<%= link_to 'Log Out','logout'%>
-		<%end%>
 
 	<% if session[:user_id] %>
-		<p>Currently Logged In As: 
-		<%=session[:username]%>
+		<%= button_to 'My Userpage',user_path(session[:user_id]), :method=>'get',:class=>'button' %>
+		<%= button_to 'Recent Tweets',tweets_path, :method=>'get',:class=>'button' %>
+		<%= button_to 'Log Out','logout', :method=>'get',:class=>'button' %>
+
+	<%else%>
+		<%= button_to 'Log In','login', :method=>'get',:class=>'button' %>
+		<%= button_to 'Recent Tweets',tweets_path, :method=>'get',:class=>'button' %>
+
+	<%end%>
+
+	
+	<% if session[:user_id] %>
+		<p>Welcome: 
+		<%= link_to session[:username],user_path(session[:user_id]) %>
 		</p>
 	<%else%>
 		<p>Not Currently Logged In </p>
 	<%end%>
+	
+
+	
+
 
 </div>
 <% flash.each do |type,message|%>

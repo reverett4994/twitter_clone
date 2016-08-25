@@ -9,6 +9,9 @@
       
       <%= image_tag @user.avatar.url, :class=> 'avatar' %>
     </p>
+      <p>
+      <%= @user.about %>
+    </p>
     <p>
       <strong>Email:</strong>
       <%= @user.email %>
@@ -60,6 +63,8 @@
       </p>
     <%end%>
     <% if session[:user_id]==@user.id %>
+      <%= link_to 'New Tweet', new_tweet_path %>
+     </br>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
     <%else%>
        <%= link_to 'Request Friend', request_friend_path(:id=>@user.id) %>
@@ -75,7 +80,7 @@
 
 
 <div id='profile_tweet_index'>
-    <% @user.tweets.each do |tweet| %>
+    <% @user.tweets.order('created_at DESC').each do |tweet| %>
    
     <%=link_to (image_tag tweet.user.avatar.url,:class=>'thumbnail'),user_path(tweet.user), :class=>'tweet_image_link'%>
 

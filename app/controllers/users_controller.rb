@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   before_action :require_user,only:[:request_friend,:accept_friend,:remove_friend]
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    
   end
 
   # GET /users/new
@@ -73,25 +75,27 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id]=@user.id
       session[:username]=@user.username
-      redirect_to tweets_path
+      redirect_to user_path(session[:user_id])
     else
-      redirect_to login_path
+      redirect_to profile_login_path
       flash[:fail]='Incorrect email or password'
     end
 end
 
   def logout
+    redirect_to tweets_path
     session[:user_id]=nil
-    redirect_to users_path
     reset_session
     flash[:logout]='You Have Logged Out'
-    end  
+  end  
 
   def request_friend
     @user = User.find(params[:id])
     @friending_user=User.find(@current_user)
     @friending_user.friend_request(@user)
     redirect_to user_path(@friending_user)
+    flash[:friend]='Your Friend Request Was Sent!'
+
   end  
 
   def accept_friend
@@ -115,10 +119,12 @@ end
       @user = User.find(params[:id])
     end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :email, :first_name, :last_name,:password,
                                    :password_confirmation,:requested_friends,:pending_friends,
-                                   :friends,:avatar)
+                                   :friends,:avatar,:about)
     end
 end
