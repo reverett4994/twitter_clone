@@ -13,14 +13,14 @@
 
 
   <div class="field">
-    <%= f.label :content, 'Tweet'%><br>
-    <%= f.text_field :content %>
+    
+    <%= f.text_field :content,:placeholder => 'Tweet Goes Here',:class=>'text_field' %>
   </div>
   <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    
+    <%= f.file_field :image,:class=>'avatar_button' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit'Create Tweet',:class=>'submit_button' %>
   </div>
 <% end %>

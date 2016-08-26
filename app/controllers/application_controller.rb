@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	  	else
 	  		#if no user logged in go to log in page
 	  		redirect_to login_path
-	  		flash[:fail]= 'You Must Be Logged In To View That Page'
+	  		flash[:alert]= 'You Must Be Logged In To Do That'
 	  end
 	end
 	

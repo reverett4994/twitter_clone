@@ -1,0 +1,30 @@
+<h1>Your Friends Most Recent Tweets</h1>
+<div id='friends_tweets_div'>
+	<div id='tweet_index'>
+	    <% @tweets.each do |tweet| %>
+	   
+	    <%=link_to (image_tag tweet.user.avatar.url,:class=>'thumbnail'),user_path(tweet.user), :class=>'tweet_image_link'%>
+
+	      <%= link_to tweet do %>
+
+	      <div class='tweet'>
+	        
+	        <p id='tweet_user'><%=tweet.user.username%></p>
+	        
+	        <p><%= tweet.content %></p>
+	        
+	        <% if tweet.image.exists? %>
+	          <%= image_tag tweet.image.url, :class=> 'index_tweet_image' %>
+	        <%end%>
+	        
+	        <% time_diffrence=TimeDifference.between(tweet.created_at, Time.current).in_general %>
+	        
+	        <p id='tweet_time'>Created About <%=time_diffrence[:days]%> days and <%=time_diffrence[:hours]%> hours ago</p>
+
+	       </div>
+
+	      </br>
+	    <%end%>
+	    <%end%>
+	</div>
+</div>

@@ -12,38 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <%= f.text_field :username,:placeholder => 'Username',:class=>'text_field' %>
   </div>
    <div class="field">
-    <%= f.label :about %><br>
-    <%= f.text_field :about %>
+    <%= f.text_field :about,:placeholder => 'About',:class=>'text_field' %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email,:placeholder => 'Email',:class=>'text_field' %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name,:placeholder => 'First Name',:class=>'text_field' %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name,:placeholder => 'Last Name',:class=>'text_field' %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password,:placeholder => 'Password',:class=>'text_field' %>
   </div>
    <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation,:placeholder => 'Password (again)',:class=>'text_field' %>
   </div> 
-  <div class="field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
+  <div class="avatar_div">
+    <%= f.file_field :avatar,:class=>'avatar_button' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit'Sign Up',:class=>'submit_button' %>
   </div>
 <% end %>

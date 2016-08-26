@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get 'fullsize_image'=>'tweets#fullsize_image'
 
+  get 'friends_tweets'=>'tweets#friends_tweets'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

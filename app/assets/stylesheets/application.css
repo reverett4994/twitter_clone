@@ -19,6 +19,9 @@ html,body {
   background-color: #f2f2f2;
   margin: 0px;
 }
+p{
+  color: black;
+}
 #wrapper{
   background-color: #f2f2f2;
   text-align: center;
@@ -26,18 +29,41 @@ html,body {
   /*Lowers content below header before scrolling!! */
   padding-top: 4.5em;
 }
-
+a:link{
+  text-decoration: none;
+}
 a:visited{
   text-decoration: none;
   color: black
+}
+
+.alert{
+  margin-top: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: red;
+}
+.noticee{
+  margin-top: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+h1{
+
+    font-family: 'Roboto Condensed', sans-serif;
+
 }
  /********************************************HEADER******************************************/
 
 #header p{
   margin: 0px;
-  margin-right: .5em;
+  margin-right: .7em;
   float: right;
   font-size: 1.2em;
+  font-family: 'Roboto Condensed', sans-serif;
+
 }
 #header a{
   text-decoration: none;
@@ -77,10 +103,11 @@ a:visited{
     cursor: pointer;
     float: left;
     margin-top: 2.3em;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold
 }
 .button:hover{
    background-color: #0059b3;
-
 }
  /********************************************HEADER******************************************/
 
@@ -159,6 +186,9 @@ th{
     border-radius: 3px;
 }
 
+.remove_friend_link{
+  font-size: 14px;
+}
 
   /********************************************User Views******************************************/
 
@@ -173,6 +203,13 @@ th{
   margin-right: auto;
   border: 1px #d9d9d9 solid;
   text-align: left;
+}
+ #delete_link:hover{
+  color: #4CAF50;
+  text-decoration: underline;
+}
+#delete_link{
+  margin-left: .3em;
 }
 
 .index_tweet_image{
@@ -226,13 +263,12 @@ th{
 #tweet_user{
   font-size: 1.1em;
   font-weight: bold;
+  color: black;
 }
 #tweet_time {
   font-size: 1em;
   color: #4d4d4d
 }
-
-
 
 
 #tweet_show{
@@ -268,4 +304,57 @@ th{
     /********************************************Tweet Views******************************************/
 
 
+  /********************************************Forms******************************************/
 
+.submit_button{
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 22px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; 
+}
+.submit_button:hover{
+   background-color: #0059b3;
+}
+
+.avatar_button{
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 22px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px; 
+}
+
+.text_field{
+    padding: 8px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+
+}
+.text_field:focus{
+    background-color: #c5eec4
+}
+
+  /********************************************Forms******************************************/
+
+
+  /********************************************friends_tweets******************************************/
+
+
+#friends_tweets_div{
+  margin-top: 2em;
+}

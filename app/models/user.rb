@@ -14,6 +14,13 @@ class User < ActiveRecord::Base
 	                  format: {
 	                    with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/
 	                  }
+     validates :username,presence: true,length:{minimum: 5},length:{maximum: 20}
+     validates :username,length:{maximum: 20}
+     validates_length_of :username, :minimum => 3
+     validates :username, uniqueness: true
+     validates :first_name,presence: true
+     validates_length_of :password, :minimum => 5
+     validates :avatar,presence: true
 	def downcase_email
 		self.email=email.downcase
 	end

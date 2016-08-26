@@ -28,11 +28,14 @@
     </p>
 
     <p>
-      <strong>Friends: </br></strong>
+      <strong>Friends: (<%=@user.friends.count%>) </br></strong>
       <% @user.friends.each do |friend| %>
         
         <% if session[:user_id]==@user.id %>
-          <%= link_to friend.username, remove_friend_path(:id=>friend.id), data: { confirm: 'Are you sure you want to remove this friend?' }  %> 
+          <%= link_to friend.username, user_path(friend.id) %>
+          (
+          <%=link_to 'remove', remove_friend_path(:id=>friend.id), data: { confirm: 'Are you sure you want to remove this friend?' }, :class=>'remove_friend_link'  %> 
+          )
         <% else %>
           <%= friend.username %>
         <%end%>
@@ -44,7 +47,7 @@
 
     <p>
       <% if session[:user_id]==@user.id %>
-        <strong>Pending Friend Requests:</strong>
+        <strong>Pending Friend Requests: (<%=@user.pending_friends.count%>)</strong>
         <% @user.pending_friends.each do |friend| %>
         <%= friend.username %>
       <%end%>
@@ -53,7 +56,7 @@
     </p>
     <% if session[:user_id]==@user.id %>
       <p>
-        <strong>Received Friends Requests:</strong>
+        <strong>Received Friends Requests: (<%=@user.requested_friends.count%>)</strong>
         <% @user.requested_friends.each do |friend| %>
 
           <%= link_to friend.username, accept_friend_path(:id=>friend.id), data: { confirm: 'Are you sure you want to accept this friend request?' }  %> 

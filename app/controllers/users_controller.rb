@@ -32,8 +32,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user }
         format.json { render :show, status: :created, location: @user }
+        flash[:noticee]= 'User was successfully created.'
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -46,8 +47,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user }
         format.json { render :show, status: :ok, location: @user }
+        flash[:noticee]= 'User was successfully updated.'
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -60,8 +62,9 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url }
       format.json { head :no_content }
+      flash[:noticee]= 'User was successfully destroyed.'
     end
   end
 
@@ -76,9 +79,10 @@ class UsersController < ApplicationController
       session[:user_id]=@user.id
       session[:username]=@user.username
       redirect_to user_path(session[:user_id])
+      flash[:noticee]='You Have Signed In'
     else
-      redirect_to profile_login_path
-      flash[:fail]='Incorrect email or password'
+      redirect_to login_path
+      flash[:alert]='Incorrect email or password. Please try again'
     end
 end
 
@@ -86,7 +90,7 @@ end
     redirect_to tweets_path
     session[:user_id]=nil
     reset_session
-    flash[:logout]='You Have Logged Out'
+    flash[:noticee]='You Have Logged Out'
   end  
 
   def request_friend
@@ -94,7 +98,7 @@ end
     @friending_user=User.find(@current_user)
     @friending_user.friend_request(@user)
     redirect_to user_path(@friending_user)
-    flash[:friend]='Your Friend Request Was Sent!'
+    flash[:noticee]='Your Friend Request Was Sent!'
 
   end  
 

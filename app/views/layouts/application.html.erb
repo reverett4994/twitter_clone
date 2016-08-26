@@ -3,6 +3,7 @@
 <head>
   <title>TwitterClone</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma|Roboto+Condensed:400,700" rel="stylesheet">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,12 +18,13 @@
 
 	<% if session[:user_id] %>
 		<%= button_to 'My Userpage',user_path(session[:user_id]), :method=>'get',:class=>'button' %>
-		<%= button_to 'Recent Tweets',tweets_path, :method=>'get',:class=>'button' %>
+		<%= button_to 'Friends Tweets',friends_tweets_path, :method=>'get',:class=>'button' %>		
+		<%= button_to 'Most Recent Tweets',tweets_path, :method=>'get',:class=>'button' %>
 		<%= button_to 'Log Out','logout', :method=>'get',:class=>'button' %>
 
 	<%else%>
 		<%= button_to 'Log In','login', :method=>'get',:class=>'button' %>
-		<%= button_to 'Recent Tweets',tweets_path, :method=>'get',:class=>'button' %>
+		<%= button_to 'MostRecent Tweets',tweets_path, :method=>'get',:class=>'button' %>
 
 	<%end%>
 
@@ -40,12 +42,19 @@
 
 
 </div>
-<% flash.each do |type,message|%>
-    <div class='flash_<%=type%>'>
-	 <%=message%>
-    </div>
-  <%end%>
+
  <div id='wrapper'>
+
+ 	<% flash.each do |type,message|%>
+   
+	 	<% if flash[:alert] %>
+	    	<div class="alert"><%= flash[:alert] %></div>
+	  	<% end %>
+
+	 	<% if flash[:noticee] %>
+	    	<div class="noticee"><%= flash[:noticee] %></div>
+	  	<% end %>
+	<%end%>
 	<%= yield %>
 </div>
 </body>
