@@ -1,0 +1,36 @@
+<%= form_for @user,html:{mulitpart: true} do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :username,:placeholder => 'Username',:class=>'text_field' %>
+  </div>
+   <div class="field">
+    <%= f.text_field :about,:placeholder => 'About',:class=>'text_field' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :email,:placeholder => 'Email',:class=>'text_field' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :first_name,:placeholder => 'First Name',:class=>'text_field' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :last_name,:placeholder => 'Last Name',:class=>'text_field' %>
+  </div>
+
+  <div class="avatar_div">
+    <%= f.file_field :avatar,:class=>'avatar_button' %>
+  </div>
+  <div class="actions">
+    <%= f.submit'Edit User',:class=>'submit_button' %>
+  </div>
+<% end %>

@@ -28,6 +28,7 @@
 
 	<%end%>
 
+
 	
 	<% if session[:user_id] %>
 		<p>Welcome: 
@@ -36,7 +37,9 @@
 	<%else%>
 		<p>Not Currently Logged In </p>
 	<%end%>
-	
+		<%= form_tag(user_search_path, method: "get") do %>
+	  <%= text_field_tag(:search,nil,:placeholder => 'Search for User',:id=>'search_bar') %>
+	<% end %>
 
 	
 

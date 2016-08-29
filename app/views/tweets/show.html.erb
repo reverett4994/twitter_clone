@@ -17,9 +17,37 @@
           <%= link_to (image_tag @tweet.image.url, :class=> 'tweet_image'), fullsize_image_path(:tweet=>@tweet) %>
         <%end%>
         
+      
+
         <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_general %>
+       
+        <% if TimeDifference.between(@tweet.created_at,  Time.current).in_seconds<60 %>
+            <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_seconds %>
+            <p id='tweet_time'>Created About <%=time_diffrence.to_i%> seconds ago</p>
         
-        <p id='tweet_time'>Created About <%=time_diffrence[:days]%> days and <%=time_diffrence[:hours]%> hours ago</p>
+        <% elsif TimeDifference.between(@tweet.created_at,  Time.current).in_minutes<60 %>
+            <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_minutes %>
+             <p id='tweet_time'>Created About <%=time_diffrence.to_i%> minutes ago</p>
+             
+        <% elsif TimeDifference.between(@tweet.created_at,  Time.current).in_hours<24 %>
+            <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_hours %>
+             <p id='tweet_time'>Created About <%=time_diffrence.to_i%> hours ago</p>
+       
+        <% elsif TimeDifference.between(@tweet.created_at,  Time.current).in_days<30 %>
+            <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_days %>
+             <p id='tweet_time'>Created About <%=time_diffrence.to_i%> days ago</p>        
+       
+        <% elsif TimeDifference.between(@tweet.created_at,  Time.current).in_months<12 %>
+            <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_months %>
+             <p id='tweet_time'>Created About <%=time_diffrence.to_i%> months ago</p>        
+       
+        <% elsif TimeDifference.between(@tweet.created_at,  Time.current).in_months<12 %>
+            <% time_diffrence=TimeDifference.between(@tweet.created_at, Time.current).in_years%>
+             <p id='tweet_time'>Created About <%=time_diffrence.to_i%> years ago</p>     
+        <%end%>   
+
+        
+
 
         <% if session[:user_id]==@tweet.user.id %>     
            <%= link_to 'Delete', @tweet,:id=>'delete_link', method: :delete, data: { confirm: 'Are you sure you want to delete this tweet?' } %>

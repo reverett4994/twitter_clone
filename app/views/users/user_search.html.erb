@@ -1,0 +1,36 @@
+
+ <%if @users.length==0%>
+ 	<h1>No Users were found!</h1>
+
+ <%elsif @users.length>1%>
+
+ 	<h1>We found <%=@users.length%> users starting with <%=@search%></h1>
+ 	<ul id='search_list'>
+ 	<% @users.each do |user| %>
+ 		
+	 		<li>
+	 			<%= link_to user_path(user) do %>
+	 			<div class='search_div'>
+		 			<%= image_tag user.avatar.url,:class=>'search_avatar'%>
+		 			 <p><%=user.username%></p>
+	 			</div>
+	 			<%end%>
+ 			</li>
+ 	<%end%>
+ 	</ul>
+ <%else%>
+ 	<h1>We found a  user with a similar name</h1>
+ 	<ul id='search_list'>
+ 	<% @users.each do |user| %>
+ 		
+	 		<li>
+	 			<%= link_to user_path(user) do %>
+	 			<div class='search_div'>
+		 			<%= image_tag user.avatar.url,:class=>'search_avatar'%>
+		 			 <p><%=user.username%></p>
+	 			</div>
+	 			<%end%>
+ 			</li>
+ 	<%end%>
+ 	</ul>
+ <%end%>

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get 'friends_tweets'=>'tweets#friends_tweets'
 
+  get 'user_search'=> 'users#user_search'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
