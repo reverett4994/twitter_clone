@@ -121,7 +121,7 @@ h1{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 18px;
     background-color: white;
-    background-image: url('search.png');
+    background-image: url('/assets/search.png');
     background-position: 5px 6px; 
     background-repeat: no-repeat;
 }

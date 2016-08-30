@@ -1,3 +1,5 @@
 <h1>index</h1>
 <%= image_tag("logo.png")%>
 <%= image_tag("search.png")%>
+<%@tweet=Tweet.find(22) %>
+ <%= image_tag @tweet.image.url, :class=> 'index_tweet_image' %>
