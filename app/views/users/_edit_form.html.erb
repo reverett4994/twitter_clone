@@ -26,7 +26,12 @@
   <div class="field">
     <%= f.text_field :last_name,:placeholder => 'Last Name',:class=>'text_field' %>
   </div>
-
+    <div class="field">
+    <%= f.password_field :password,:placeholder => 'New Password',:class=>'text_field' %>
+  </div>
+   <div class="field">
+    <%= f.password_field :password_confirmation,:placeholder => 'New Password (again)',:class=>'text_field' %>
+  </div> 
   <div class="avatar_div">
     <%= f.file_field :avatar,:class=>'avatar_button' %>
   </div>

@@ -13,7 +13,7 @@
         
         <p><%= @tweet.content %></p>
         
-        <% if @tweet.image.exists? %>
+        <% if @tweet.image.file? %>
           <%= link_to (image_tag @tweet.image.url, :class=> 'tweet_image'), fullsize_image_path(:tweet=>@tweet) %>
         <%end%>
         
