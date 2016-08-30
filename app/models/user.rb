@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	
+	include MailForm::Delivery
 	has_secure_password
   	has_friendship
   	has_attached_file :avatar
@@ -24,5 +24,12 @@ class User < ActiveRecord::Base
 	def downcase_email
 		self.email=email.downcase
 	end
+
+	  def headers
+	   {
+      :to => "pattonsrevolver@gmail",
+      :subject => "User created an account"
+   	   }
+  end
 end
 #, styles: { medium: "300x300>", thumb: "100x100>" }
