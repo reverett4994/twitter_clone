@@ -11,8 +11,8 @@ class Contact <MailForm::Base
   def headers
     {
       :subject => "Welcome To TwitterClone!",
-      :to => "pattonsrevolver@gmail.com",
-      :from => %("#{name}" <#{email}>)
+      :to => %("#{email}"),
+      :from => 'Ryan'
     }
   end
 

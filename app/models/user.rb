@@ -25,11 +25,12 @@ class User < ActiveRecord::Base
 		self.email=email.downcase
 	end
 
-	  def headers
+	def headers
 	   {
-      :to => "pattonsrevolver@gmail",
-      :subject => "User created an account"
+      :subject => "Welcome To TwitterClone!",
+      :to => %("#{email}"),
+      :from => 'TwitterClone'
    	   }
-  end
+  	end
 end
 #, styles: { medium: "300x300>", thumb: "100x100>" }
