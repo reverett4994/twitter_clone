@@ -86,4 +86,7 @@ Rails.application.configure do
       s3_region: ENV.fetch('AWS_REGION'),
     }
   } 
+  # added in hoped to bring search icon to text box in heroku
+  config.serve_static_assets = true
+  config.assets.compile = true
 end

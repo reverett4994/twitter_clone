@@ -3,3 +3,7 @@
 <%= image_tag("search.png")%>
 <%@tweet=Tweet.find(22) %>
  <%= image_tag @tweet.image.url, :class=> 'index_tweet_image' %>
+
+         <% if @tweet.image.file? %>
+          <%= image_tag @tweet.image.url, :class=> 'index_tweet_image' %>
+        <%end%>
