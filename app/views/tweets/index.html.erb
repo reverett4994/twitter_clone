@@ -21,7 +21,7 @@
         
         <p><%= tweet.content %></p>
         
-        <% if tweet.image.exists? %>
+        <% if tweet.image.file? %>
           <%= image_tag tweet.image.url, :class=> 'index_tweet_image' %>
         <%end%>
         
