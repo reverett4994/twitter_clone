@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-	default from: 'twitterindex.com'
+	default from: 'TwitterClone'
 	 
 	def welcome_email(user)
 	   @user = user

@@ -64,9 +64,11 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to tweets_path }
+      session[:user_id]=nil
+      reset_session
       format.json { head :no_content }
-      flash[:noticee]= 'User was successfully destroyed.'
+      flash[:noticee]= 'User Was Successfully Deleted.'
     end
   end
 
