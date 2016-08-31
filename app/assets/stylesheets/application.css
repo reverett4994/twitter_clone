@@ -63,8 +63,9 @@ h1{
   float: right;
   font-size: 1.2em;
   font-family: 'Roboto Condensed', sans-serif;
-  width: 15%
-
+  max-width: 10%;
+  display:inline-block;
+  position: relative
 }
 #header a{
   text-decoration: none;
@@ -105,15 +106,19 @@ h1{
     float: left;
     margin-top: 2.3em;
     font-family: 'Roboto Condensed', sans-serif;
-    font-weight: bold
+    font-weight: bold;
+    max-width:18%;
+
 }
 .button:hover{
    background-color: #0059b3;
 }
 
 
+
 #search_bar{
-    padding: 0.494em 2.0em;
+    padding: 0.494em 2em;
+    padding-right: .1em;
     margin-top: 2.05em;
     display: inline-block;
     border: 1px solid #ccc;
@@ -124,10 +129,33 @@ h1{
     background-image: url('search.png');
     background-position: 5px 6px; 
     background-repeat: no-repeat;
+    width: 12%;
 }
-#search_bar:focus{
+
+/********************************** For mobile phones: ********************************************/
+
+
+@media only screen and (max-width: 961px) {
     
-   
+    #header p {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    
+    #header p {
+        display: none;
+    }
+    #search_bar{
+      display: none;
+    }
+    .button{
+      max-width: 20%;
+      
+    }
+
 }
  /********************************************HEADER******************************************/
 
@@ -170,6 +198,7 @@ th{
   display: inline-block;
   width: 20%;
   font-size: 1.2em;
+  overflow: hidden;
 }
 
 #profile_tweet_index{
@@ -235,7 +264,7 @@ th{
 .index_tweet_image{
     height: auto; 
     width: auto; 
-    max-width: 450px; 
+    max-width: 99%; 
     max-height: 450px;	
 }
 
