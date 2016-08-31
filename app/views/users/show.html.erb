@@ -69,6 +69,9 @@
       <%= link_to 'New Tweet', new_tweet_path %>
      </br>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
+      <br>
+     <td><%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
     <%else%>
        <%= link_to 'Request Friend', request_friend_path(:id=>@user.id) %>
     <%end%>

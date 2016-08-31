@@ -33,10 +33,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         
-        @contact=Contact.new(:to=>@user.email,:name=>'Ryan',:message=>'Welcome')
-        @contact.request=request
-        @contact.deliver
-
+        UserMailer.welcome_email(@user).deliver_now
         format.html { redirect_to @user }
         format.json { render :show, status: :created, location: @user }
         flash[:noticee]= 'User was successfully created.'
